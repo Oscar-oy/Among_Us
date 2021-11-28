@@ -1,7 +1,10 @@
 import socket
 import struct
 import textwrap
-#It doesn´t allow us to do it
+# It doesn´t allow us to do it
+
+# Again trying to allow the scrit to sniff
+
 
 def main():
     conn = socket.socket(socket.AF_INET, socket.SOCK_RAW)
