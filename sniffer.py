@@ -7,13 +7,17 @@ import textwrap
 
 
 def main():
-    conn = socket.socket(socket.AF_INET, socket.SOCK_RAW)
+    conn = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_IP)
+    conn.bind(("172.20.24.210", 80))
+   
+    i = 0
 
-    while True:
-        raw_data, addr = conn.recvfrom(65536)
+    while i<1000:
+        raw_data, addr = conn.recvfrom(65565)
         dest_mac, src_mac, eth_proto, data = ethernet_frame(raw_data)
         print('\nEthernet Frame: ')
         print('Destination: {}, Source: {}, Protocol: {}'.format(dest_mac, src_mac, eth_proto))
+        i += 1
 
 # Unpack ethernet frame
 def ethernet_frame(data):
