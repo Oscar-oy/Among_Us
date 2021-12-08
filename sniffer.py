@@ -5,10 +5,14 @@ import textwrap
 
 # Again trying to allow the scrit to sniff
 
+'''
+Hago una pausa en este proyecto ya que de momento no me sirve para el proyecto
+'''
+
 
 def main():
-    conn = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_IP)
-    conn.bind(("172.20.24.210", 80))
+    conn = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_UDP)
+    conn.bind(("172.20.10.2", 60370))
    
     i = 0
 
@@ -18,7 +22,7 @@ def main():
         print('\nEthernet Frame: ')
         print('Destination: {}, Source: {}, Protocol: {}'.format(dest_mac, src_mac, eth_proto))
         i += 1
-
+main()
 # Unpack ethernet frame
 def ethernet_frame(data):
     dest_mac, src_mac, proto = struct.unpack('! 6s 6s H', data[:14])
